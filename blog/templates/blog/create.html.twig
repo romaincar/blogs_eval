@@ -2,7 +2,7 @@
 
 
 {% block body %}
-
+    {% if is_granted('ROLE_ADMIN') %}
 <h1>Création de l'article :</h1>
 
     {{ form_start(formArticle) }}
@@ -29,5 +29,7 @@
         {% endif %}
     </button>
     {{ form_end(formArticle) }}
-
+        {% else %}
+            <h2>Page réservé a l'admin !</h2>
+{% endif %}
 {% endblock %}

@@ -46,6 +46,11 @@ class User implements UserInterface
      */
     public $confirm_password;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Role;
+
 
     public function getId(): ?int
     {
@@ -100,6 +105,25 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        if ($this->Role == 'ROLE_USER') {
+            return ['ROLE_USER'];
+        }elseif ($this->Role == 'ROLE_ADMIN'){
+            return ['ROLE_ADMIN'];
+        }
+        else{
+            RETURN[];
+        }
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->Role;
+    }
+
+    public function setRole(string $Role): self
+    {
+        $this->Role = $Role;
+
+        return $this;
     }
 }

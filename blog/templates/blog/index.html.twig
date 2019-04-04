@@ -8,6 +8,7 @@
 
         {% for article in articles %}
         <articles>
+
             <h2>{{ article.titre }}</h2>
             <div class="metadata">Ecrit le {{ article.createAt | date('d/m/y') }} à {{ article.createAt | date('H:i') }}</div>
             <div class="content">
@@ -15,8 +16,10 @@
               {{ article.content | raw }}
                 <a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-primary">Lire la suite...</a>
             </div>
+
         </articles>
 {% endfor %}
+
 
     </section>
 
