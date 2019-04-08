@@ -38,6 +38,8 @@ class BlogController extends AbstractController
         return $this->render('blog/accueil.html.twig');
     }
 
+    /*article creation and modification article*/
+
     /**
      * @Route("admin/blog/new", name="blog_create")
      * @Route("admin/blog/{id}/edit", name="blog_edit")
@@ -86,6 +88,9 @@ class BlogController extends AbstractController
         ]);
     }
 
+
+    /*Showing articles and displaying one article at a time*/
+
     /**
      * @Route("/blog/{id}", name="blog_show")
      */
@@ -117,6 +122,8 @@ class BlogController extends AbstractController
             'commentForm' => $form->createView()
         ]);
     }
+
+    /*deleting article*/
 
     /**
      * @Route("/admin/{id}/delete", name="blog_delete")

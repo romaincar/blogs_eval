@@ -23,6 +23,7 @@ class AdminController extends AbstractController
         ]);
     }
 
+    /**function delete comment**/
     /**
      * @Route("/admin/comm/{id}", name="admin_commentaire", methods={"DELETE"})
      */

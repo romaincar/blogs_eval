@@ -12,6 +12,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class LogController extends AbstractController
 {
+   /* function user registration */
+
     /**
      * @Route("/inscription", name="log_inscription")
      */
@@ -39,6 +41,9 @@ class LogController extends AbstractController
 
         ]);
     }
+
+    /* function user registration and logout */
+
 
     /**
      * @Route("/connexion", name="log_connexion")
