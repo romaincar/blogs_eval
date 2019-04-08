@@ -28,8 +28,6 @@ class LogController extends AbstractController
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
 
-            $user->setRole('ROLE_USER');
-
             $manager->persist($user);
             $manager->flush();
 

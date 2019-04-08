@@ -39,8 +39,8 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/blog/new", name="blog_create")
-     * @Route("blog/{id}/edit", name="blog_edit")
+     * @Route("admin/blog/new", name="blog_create")
+     * @Route("admin/blog/{id}/edit", name="blog_edit")
      */
     public function createmodif(Article $article = null, Request $request, ObjectManager $manager)
     {
@@ -89,7 +89,7 @@ class BlogController extends AbstractController
     /**
      * @Route("/blog/{id}", name="blog_show")
      */
-    public function show_in(ArticleRepository $repo, $id, Request $request, ObjectManager $manager)
+    public function show_in(ArticleRepository $repo, $id, Comment $comment, Request $request, ObjectManager $manager)
     {
         $comment = new Comment();
 
@@ -115,6 +115,47 @@ class BlogController extends AbstractController
         return $this->render('blog/show_in.html.twig', [
             'article' => $article,
             'commentForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/{id}/delete", name="blog_delete")
+     */
+    public function Delete(Article $article = null, Comment $comment, Request $request, ObjectManager $manager)
+    {
+
+
+
+        $form = $this->createFormBuilder($article)
+            ->add('titre', TextType::class, [
+                'attr' => ['placeholder' => "Titre de l'article",
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('content', TextareaType::class, [
+                'attr' => ['placeholder' => "Texte de l'article",
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('image', TextType::class, [
+                'attr' => ['placeholder' => " URL de image",
+                    'class' => 'form-control'
+                ]
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->remove($article);
+            $manager->flush();
+
+            return $this->redirectToRoute('blog', ['id' => $article->getId()]);
+        }
+
+
+        return $this->render('blog/delete.html.twig', [
+            'formArticle' => $form->createView(),
         ]);
     }
 

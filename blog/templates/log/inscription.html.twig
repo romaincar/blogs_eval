@@ -5,12 +5,24 @@
 
     {{ form_start(form) }}
 
-    {{ form_row(form.username , {'label': 'Nom d\'utilisateur', 'attr': {'placeholder': 'Nom d\'utilisateur ...'}}) }}
-    {{ form_row(form.mail, {'label': 'Adresse mail', 'attr': {'placeholder': 'Adresse mail ...'}}) }}
-    {{ form_row(form.password, {'label': 'Password', 'attr': {'placeholder': 'Password ...'}}) }}
-    {{ form_row(form.confirm_password, {'label': 'Confirmer password', 'attr': {'placeholder': 'Confirmer password ...'}}) }}
+    <div class="form-group">
+        {{ form_row(form.username , {'label': 'Nom d\'utilisateur', 'attr': {'placeholder': 'Nom d\'utilisateur ...'}}) }}
+    </div>
 
+    <div class="form-group">
+        {{ form_row(form.mail, {'label': 'Adresse mail', 'attr': {'placeholder': 'Adresse mail ...'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form.password, {'label': 'Password', 'attr': {'placeholder': 'Password ...'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form.confirm_password, {'label': 'Confirmer password', 'attr': {'placeholder': 'Confirmer password ...'}}) }}
+    </div>
     <button type="submit" class="btn btn-success">Inscription</button>
     {{ form_end(form) }}
 
+
 {% endblock %}
+
